@@ -64,6 +64,7 @@ namespace is4
                 {
                     webBuilder.UseStartup<Startup>();
                     webBuilder.UseSerilog();
+                    webBuilder.UseUrls("http://*:5001");
                 });
     }
 }
