@@ -1,0 +1,50 @@
+﻿body {
+    background-color: #001529;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color:rgba(0,0,0,0.65);
+}
+
+/*div背景*/
+.div-bg-color {
+    background-color: #ffffff;
+}
+
+
+
+
+/*登录/授权页面 div容器 */
+.my-container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 8px;
+    min-height: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+}
+
+
+
+/*版权*/
+.copyright {
+    margin-top: 30px;
+    text-align: center
+}
+
+/*图片容器*/
+.imgContainer {
+    text-align:center;
+}
+.imgContainer_text {
+    margin-top: 12px;
+    margin-bottom: 12px;
+    font-size: 24px;
+    font-style: italic;
+}
+
+
+

@@ -1,0 +1,145 @@
+﻿@model LoginViewModel
+
+<script src="~/js/animation.js"></script>
+
+<div class="login-page row">
+        <div class="col-md-offset-4 col-sm-4 my-container div-bg-color " id="login-container"> 
+
+                <form asp-route="Login">
+
+                    <div class="imgContainer">
+                        <img src="~/logo.png" width="120" height="120" alt="" />
+                        <div class="imgContainer_text">身份认证中心</div>
+                    </div>
+
+                    <input type="hidden" asp-for="ReturnUrl" />
+
+                    <div class="form-group">
+                        @*<label asp-for="Username">用户名</label>*@
+                        <input class="form-control" placeholder="请输入用户名" asp-for="Username" autofocus>
+                        <span class="text-danger" asp-validation-for="Username"></span>
+                    </div>
+
+                    <div class="form-group">
+                        @*<label asp-for="Password">密码</label>*@
+                        <input type="password" class="form-control" placeholder="请输入密码" asp-for="Password" autocomplete="off">
+                        <span class="text-danger" asp-validation-for="Password"></span>
+                    </div>
+
+                    @if (Model.AllowRememberLogin)
+                    {
+                        <div class="form-group login-remember">
+                            <label asp-for="RememberLogin">
+                                <input asp-for="RememberLogin">
+                                <strong>记住密码</strong>
+                            </label>
+                        </div>
+                    }
+
+                <div>
+                    <a asp-controller="Register" asp-action="Register" asp-route-returnURL="@Model.ReturnUrl"  >注册新用户</a>
+                </div>
+
+                    <div>
+                        <p>测试用户为：alice/bob, password: Pass123$</p>
+                    </div>
+
+                    <partial name="_ValidationSummary" />
+
+                    <div>
+                        <button class="btn btn-primary btn-block" id="login" name="button" value="login">登录</button>
+                        @*<button class="btn btn-default" name="button" value="cancel">撤销</button>*@
+                    </div>
+
+                    <div class="copyright">
+                        Graduation Project ©2020 By 7
+                    </div>
+                </form>
+
+                
+        </div>
+
+      
+
+        @*@if (Model.EnableLocalLogin)
+        {
+            <div class="col-sm-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">用户登录</h3>
+                    </div>
+                    <div class="panel-body">
+
+                        <form asp-route="Login">
+                            <input type="hidden" asp-for="ReturnUrl" />
+
+                            <fieldset>
+                                <div class="form-group">
+                                    <label asp-for="Username">用户名</label>
+                                    <input class="form-control" placeholder="Username" asp-for="Username" autofocus>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Password">密码</label>
+                                    <input type="password" class="form-control" placeholder="Password" asp-for="Password" autocomplete="off">
+                                </div>
+                                @if (Model.AllowRememberLogin)
+                                {
+                                    <div class="form-group login-remember">
+                                        <label asp-for="RememberLogin">
+                                            <input asp-for="RememberLogin">
+                                            <strong>记住密码</strong>
+                                        </label>
+                                    </div>
+                                }
+
+                                <div>
+                                    <p>测试用户为：alice/bob, password: Pass123$</p>
+                                </div>
+
+                                <div class="form-group">
+                                    <button class="btn btn-primary" name="button" value="login">Login</button>
+                                    <button class="btn btn-default" name="button" value="cancel">Cancel</button>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        }*@
+
+        @*@if (Model.VisibleExternalProviders.Any())
+        {
+            <div class="col-md-6 col-sm-6 external-providers">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">扩展登录</h3>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="list-inline">
+                            @foreach (var provider in Model.VisibleExternalProviders)
+                            {
+                                <li>
+                                    <a class="btn btn-default"
+                                       asp-controller="External"
+                                       asp-action="Challenge"
+                                       asp-route-provider="@provider.AuthenticationScheme"
+                                       asp-route-returnUrl="@Model.ReturnUrl">
+                                        @provider.DisplayName
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        }*@
+
+        @if (!Model.EnableLocalLogin && !Model.VisibleExternalProviders.Any())
+        {
+            <div class="alert alert-warning">
+                <strong>无效登录请求</strong>
+                不存在此客户端
+            </div>
+        }
+</div>
+

@@ -1,0 +1,124 @@
+@model ConsentViewModel
+
+    <script src="~/js/animation.js"></script>
+
+<div class="page-consent row ">
+
+        <div class="col-md-offset-4 col-sm-4  my-container div-bg-color" id="consent-container">
+            <div>
+  
+
+
+                @*@if (Model.ClientLogoUrl != null)
+        {
+            <div class="client-logo"><img src="@Model.ClientLogoUrl"></div>
+        }
+        <h1>
+            @Model.ClientName <br />
+            <small>正在请求您的授权</small>
+        </h1>
+
+        <partial name="_ValidationSummary" />*@
+
+                <form asp-action="Index" class="consent-form">
+
+
+
+                    <input type="hidden" asp-for="ReturnUrl" />
+
+                    <div class="imgContainer_text imgContainer">
+                        请求授权
+                    </div>
+
+
+                    <div class="panel panel-default consent-buttons">
+                        <div class="panel-heading">
+                            <span class="glyphicon glyphicon-user"></span>
+                            请求的信息
+                        </div>
+
+                        @if (Model.IdentityScopes.Any())
+                        {
+                            <ul class="list-group">
+                                @foreach (var scope in Model.IdentityScopes)
+                                {
+                                    <partial name="_ScopeListItem" model="@scope" />
+                                }
+                            </ul>
+                        }
+
+                        @if (Model.ResourceScopes.Any())
+                        {
+                            <ul class="list-group">
+                                @foreach (var scope in Model.ResourceScopes)
+                                {
+                                    <partial name="_ScopeListItem" model="scope" />
+                                }
+                            </ul>
+                        }
+
+                    </div>
+
+                    <div class="consent-buttons">
+                        <button class="btn btn-primary btn-block" name="button" value="yes" autofocus>允许</button>
+
+                        @*<button name="button" value="no" class="btn">不允许</button>*@
+                    </div>
+
+                    <div class="copyright">
+                        Graduation Project ©2020 By 7
+                    </div>
+
+
+                    @*@if (Model.IdentityScopes.Any())
+        {
+            <div class="panel panel-default consent-buttons">
+                <div class="panel-heading">
+                    <span class="glyphicon glyphicon-user"></span>
+                    个人信息
+                </div>
+                <ul class="list-group">
+                    @foreach (var scope in Model.IdentityScopes)
+                    {
+                        <partial name="_ScopeListItem" model="@scope" />
+                    }
+                </ul>
+            </div>
+        }
+
+        @if (Model.ResourceScopes.Any())
+        {
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <span class="glyphicon glyphicon-tasks"></span>
+                    访问程序
+                </div>
+                <ul class="list-group">
+                    @foreach (var scope in Model.ResourceScopes)
+                    {
+                        <partial name="_ScopeListItem" model="scope" />
+                    }
+                </ul>
+            </div>
+        }*@
+
+
+
+                    @*@if (Model.AllowRememberConsent)
+        {
+            <div class="consent-remember">
+                <label>
+                    <input class="consent-scopecheck" asp-for="RememberConsent" />
+                    <strong>记住我的决定</strong>
+                </label>
+            </div>
+        }*@
+
+
+
+                </form>
+
+            </div>
+        </div>
+
+</div>

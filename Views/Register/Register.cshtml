@@ -1,0 +1,61 @@
+﻿@using is4.Quickstart.Register
+@model RegisterInputModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+    <script src="~/js/animation.js"></script>
+
+    <div class="login-page row">
+        <div class="col-md-offset-4 col-sm-4 my-container div-bg-color" id="register-container">
+
+            <form asp-route="Register">
+
+                <div class="imgContainer">
+                    <div class="imgContainer_text">用户注册中心</div>
+                </div>
+
+
+                <div class="form-group">
+                    <input class="form-control" type="hidden" placeholder="测试" asp-for="returnURL" value="@ViewBag.returnURL" autofocus>
+                </div>
+
+                <div class="form-group">
+                    <input class="form-control" placeholder="请输入用户名" asp-for="UserName" autofocus>
+                    <span class="text-danger" asp-validation-for="UserName"></span>
+
+                </div>
+
+                <div class="form-group">
+                    <input class="form-control" placeholder="请输入邮箱" asp-for="Email" autofocus>
+                    <span class="text-danger" asp-validation-for="Email"></span>
+                </div>
+
+                <div class="form-group">
+                    <input class="form-control" placeholder="请输入密码" asp-for="PassWord" autofocus>
+                    <span class="text-danger" asp-validation-for="PassWord"></span>
+                </div>
+
+                <div class="form-group">
+                    <input class="form-control" placeholder="请输入电话号码" asp-for="PhoneNumber" autofocus>
+                    <span class="text-danger" asp-validation-for="PhoneNumber"></span>
+                </div>
+
+                <partial name="_ValidationSummary" />
+
+                <div>
+                    <button class="btn btn-primary btn-block" id="login" name="button">注册</button>
+                </div>
+
+                <div>
+                    <a asp-controller="Account" asp-action="Login" asp-route-returnUrl="@ViewBag.returnURL">已有账户，点此登录</a>
+                </div>
+
+                <div class="copyright">
+                    Graduation Project ©2020 By 7
+                </div>
+            </form>
+
+        </div>
+
+    </div>
