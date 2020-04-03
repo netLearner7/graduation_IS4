@@ -3,14 +3,11 @@ using is4.Models;
 using is4.Service;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System.Text.Encodings.Web;
-using System.Text.Unicode;
 
 namespace is4
 {
@@ -29,7 +26,7 @@ namespace is4
         {
             services.AddCors(option=> {
                 option.AddPolicy("spaCors", o => {
-                    o.WithOrigins("http://localhost:4200")
+                    o.WithOrigins("http://localhost:4200", "https://netlearner7.github.io/firstA/s")
                     .AllowAnyHeader()
                     .AllowAnyMethod();
                 });
@@ -88,13 +85,14 @@ namespace is4
                 app.UseDatabaseErrorPage();
             }
 
-            if (Environment.IsProduction())
-            {
-                app.UseForwardedHeaders(new ForwardedHeadersOptions
-                {
-                    ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
-                });
-            }
+            //代理头 本例测试不用
+            //if (Environment.IsProduction())
+            //{
+            //    app.UseForwardedHeaders(new ForwardedHeadersOptions
+            //    {
+            //        ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+            //    });
+            //}
 
             app.UseStaticFiles();
             app.UseCors();

@@ -26,10 +26,10 @@ namespace is4
             };
 
 
-        public static IEnumerable<Client> Clients =>
+        public static IEnumerable<Client> Clients =>            
             new Client[]
-            {
-                //app端
+            {             
+                //app client
                 new Client{
 
                      ClientId="pwdClient",
@@ -47,7 +47,7 @@ namespace is4
                         IdentityServerConstants.StandardScopes.OfflineAccess
                     }
                 },
-
+                //localhost client
                 new Client
                 {
                     ClientId = "spa",
@@ -72,6 +72,33 @@ namespace is4
 
                     PostLogoutRedirectUris = { "http://localhost:4200" },
                     AllowedCorsOrigins = { "http://localhost:4200" },
+
+                    AllowedScopes = { "openid", "profile", "api1" }
+                },
+                //github client
+                new Client
+                {
+                    ClientId = "spa2",
+                    ClientName = "会议管理系统",
+                    ClientUri = "https://netlearner7.github.io/firstA/",
+
+                    AllowedGrantTypes = GrantTypes.Implicit,
+                    AllowAccessTokensViaBrowser=true,
+                    RequireConsent=true,
+
+                    AccessTokenLifetime=60*60,
+
+                    RequirePkce = true,
+
+                    RequireClientSecret = false,
+
+                    RedirectUris =
+                    {
+                       "https://netlearner7.github.io/firstA/signin-oidc"
+                    },
+
+                    PostLogoutRedirectUris = { "https://netlearner7.github.io/firstA/" },
+                    AllowedCorsOrigins = { "https://netlearner7.github.io/firstA/" },
 
                     AllowedScopes = { "openid", "profile", "api1" }
                 }
