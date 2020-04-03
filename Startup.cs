@@ -26,7 +26,7 @@ namespace is4
         {
             services.AddCors(option=> {
                 option.AddPolicy("spaCors", o => {
-                    o.WithOrigins("http://localhost:4200", "https://netlearner7.github.io/firstA/s")
+                    o.WithOrigins("http://localhost:4200", "http://39.99.217.82:4200")
                     .AllowAnyHeader()
                     .AllowAnyMethod();
                 });

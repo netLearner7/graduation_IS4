@@ -75,12 +75,12 @@ namespace is4
 
                     AllowedScopes = { "openid", "profile", "api1" }
                 },
-                //github client
+                //yun client
                 new Client
                 {
                     ClientId = "spa2",
                     ClientName = "会议管理系统",
-                    ClientUri = "https://netlearner7.github.io/firstA/",
+                    ClientUri = "http://39.99.217.82:4200",
 
                     AllowedGrantTypes = GrantTypes.Implicit,
                     AllowAccessTokensViaBrowser=true,
@@ -94,11 +94,11 @@ namespace is4
 
                     RedirectUris =
                     {
-                       "https://netlearner7.github.io/firstA/signin-oidc"
+                       "http://39.99.217.82:4200/signin-oidc"
                     },
 
-                    PostLogoutRedirectUris = { "https://netlearner7.github.io/firstA/" },
-                    AllowedCorsOrigins = { "https://netlearner7.github.io/firstA/" },
+                    PostLogoutRedirectUris = { "http://39.99.217.82:4200" },
+                    AllowedCorsOrigins = { "http://39.99.217.82:4200" },
 
                     AllowedScopes = { "openid", "profile", "api1" }
                 }
